@@ -37,7 +37,7 @@ class AcessoVisitanteController extends Controller
             'motivo_visita' => 'nullable|string|max:255',
             'responsavel_interno' => 'nullable|string|max:255',
             'data_hora_entrada' => 'required|date',
-            'data_hora_saida' => 'nullable|date|after:data_hora_entrada'
+            'data_hora_saida' => 'nullable|date'
         ]);
 
         try {
@@ -80,7 +80,7 @@ class AcessoVisitanteController extends Controller
             'motivo_visita' => 'nullable|string|max:255',
             'responsavel_interno' => 'nullable|string|max:255',
             'data_hora_entrada' => 'required|date',
-            'data_hora_saida' => 'nullable|date|after:data_hora_entrada'
+            'data_hora_saida' => 'nullable|date'
         ]);
 
         try {
