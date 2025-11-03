@@ -25,19 +25,19 @@ class Veiculo extends Model
     public function motoristas()
     {
         return $this->belongsToMany(Motorista::class, 'motorista_veiculo')
-                    ->withPivot('is_atual')
+                    ->withPivot('data_associacao')
                     ->withTimestamps();
-    }
-
-    public function motoristaAtual()
-    {
-        return $this->belongsToMany(Motorista::class, 'motorista_veiculo')
-                    ->wherePivot('is_atual', true)
-                    ->first();
     }
 
     public function cargas()
     {
         return $this->hasMany(Carga::class);
+    }
+
+    public function areas()
+    {
+        return $this->belongsToMany(AreaPatio::class, 'veiculo_area', 'veiculo_id', 'area_id')
+                    ->withPivot('data_hora_ocupacao', 'data_hora_saida')
+                    ->withTimestamps();
     }
 }

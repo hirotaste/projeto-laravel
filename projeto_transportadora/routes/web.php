@@ -10,6 +10,9 @@ use App\Http\Controllers\ClienteController;
 use App\Http\Middleware\NivelAdmMiddleware;
 use App\Http\Middleware\NivelCliMiddleware;
 use App\Http\Controllers\VeiculoController;
+use App\Http\Controllers\VisitanteController;
+use App\Http\Controllers\AcessoVisitanteController;
+use App\Http\Controllers\FornecedorController;
 
 // Rota inicial
 Route::get('/', function () {
@@ -58,4 +61,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('motoristas', MotoristasController::class);
     Route::resource('cargas', App\Http\Controllers\CargaController::class);
     Route::resource('areaspatio', AreaspatioController::class);
+    Route::resource('visitantes', VisitanteController::class);
+    Route::resource('acessos', AcessoVisitanteController::class);
+    Route::resource('fornecedores', FornecedorController::class);
 });

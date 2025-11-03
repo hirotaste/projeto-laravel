@@ -21,4 +21,16 @@ class Motorista extends Model
     {
         return $this->belongsTo(Transportadora::class);
     }
+
+    public function veiculos()
+    {
+        return $this->belongsToMany(Veiculo::class, 'motorista_veiculo')
+                    ->withPivot('data_associacao')
+                    ->withTimestamps();
+    }
+
+    public function cargas()
+    {
+        return $this->hasMany(Carga::class);
+    }
 }

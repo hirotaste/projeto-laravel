@@ -11,16 +11,16 @@ return new class extends Migration
      */
     public function up(): void
     {
-        // Pivot table para motoristas e veículos
-        Schema::create('motorista_veiculo', function (Blueprint $table) {
+        Schema::create('veiculo_area', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('motorista_id');
             $table->unsignedBigInteger('veiculo_id');
-            $table->date('data_associacao')->nullable();
+            $table->unsignedBigInteger('area_id');
+            $table->dateTime('data_hora_ocupacao');
+            $table->dateTime('data_hora_saida')->nullable();
             $table->timestamps();
 
-            $table->foreign('motorista_id')->references('id')->on('motoristas')->onDelete('cascade');
             $table->foreign('veiculo_id')->references('id')->on('veiculos')->onDelete('cascade');
+            $table->foreign('area_id')->references('id')->on('areaspatio')->onDelete('cascade');
         });
     }
 
@@ -29,6 +29,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('motorista_veiculo');
+        Schema::dropIfExists('veiculo_area');
     }
 };
