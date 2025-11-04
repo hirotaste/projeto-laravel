@@ -18,4 +18,11 @@ class AreaPatio extends Model
     protected $casts = [
         'capacidade' => 'integer',
     ];
+
+    public function veiculos()
+    {
+        return $this->belongsToMany(Veiculo::class, 'veiculo_area', 'area_id', 'veiculo_id')
+                    ->withPivot('data_hora_ocupacao', 'data_hora_saida')
+                    ->withTimestamps();
+    }
 }
